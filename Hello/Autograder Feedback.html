@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<!-- saved from url=(1554)https://coursera-grid-grade.s3.amazonaws.com/output/FCEEMWOUQWqhBDFjlKFqvw/htmlFeedback.html?X-Amz-Security-Token=IQoJb3JpZ2luX2VjEJz%2F%2F%2F%2F%2F%2F%2F%2F%2F%2FwEaCXVzLWVhc3QtMSJGMEQCICMYiKa3jwRXdrCQ0iVSGYCzBMS0uqXhxksZB7rj8AcpAiANy%2FgNWoI%2B6GsVs%2B2VY%2BZ6Zwe168iytf3rr4lUtM19TCqDBAj1%2F%2F%2F%2F%2F%2F%2F%2F%2F%2F8BEAAaDDIwMDM3NDY1NDkxMiIMHT7kcygnPqzpM0H0KtcDsrP2%2FqkeCn%2F8HoVtgwz4rzt38RVZ%2BCdmw1fFP1Pzin1MPh7ZIXCd%2BdBgxVCcJV6DGh%2FppSnPULTpZutiu1qlNpJyCw9ItkoasIOT7bGVBMLmvuSQJi57jssoo5gdeQvwd5iRgYVC%2FfFv1frjUxYufZ5LXjFnuQqX6pr0okjcNDQhlceVbzccFSrW3d84WToiiG3rqdTySRdzv8LrOxA%2F1CfYK2eqwEWcVsCgAHtbnLqYCTlQOVuj7xe29kwC6BGcKEszDXz9ooBu95YjUzFEmtjgW1aEzyPKtjnyMYTuLL%2FgHPzTL%2B%2FuhEhc2oNGYIXR7MMp%2FFV%2FFNDvR%2FSjhdNsxucoC%2Fsh5B5z7zpTWO2JQJ%2B0cgIaKqzK8LiySEC5jwGa2mM%2BCcikXvtZTZnNNJMmNJjaUKzlrYjG9L7%2F%2FeReQMyl4Egi7rEr9lMWjhDxgScf2%2BVUKYdkBOjbZgC5wBOJZNN3HvLXVHIBvPrCshNpgXb86NW%2FplTc%2Fiu1UFtkGnfW2cVOR3DgZ%2BUoAEosm3D4qc1xQUeBCyeWrV68F4KO62He7tkeqJxMhH2Oy%2FZjkxdHibDl2YVz%2FiPAB5ir9UmQZ8x8DcENpkLvCCnuXfl0fbKEgSvVWMfsMJTkqIoGOqYBpPfqX3qhKrelzJQsaBNAXhnUo6dOS1IoYvhDxDBtdn95fdxBBMd1KICyzRMWs8jC%2FTIdU0UHuXi1toB2nfa5Erq5sXqxQFIokLAoh5SpK%2B0LD%2BtwlaJNfhBehRK6XwmRLOFIcmwEcyzhD6qLFyMMGByPwj08Hs23xhNgfwKriZQT8ukH4FAG4IAYlqO1R7j0gzOWi4APrSTaem70ONVurbNQCTo9Yw%3D%3D&X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Date=20210921T200724Z&X-Amz-SignedHeaders=host&X-Amz-Expires=900&X-Amz-Credential=ASIAS5J2CS7AP3Z5QKIQ%2F20210921%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Signature=e259d919e313f762635838a89d024033ab8f1ed24022da813904225bf6355ebe -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<title>Autograder Feedback</title>
+
+</head>
+
+<body>
+
+<p>
+<em>
+See the Assessment Guide for information on how to interpret this report.
+</em>
+<br><br>
+
+</p><h2>ASSESSMENT SUMMARY</h2>
+<pre>
+Compilation:  <font color="#009900">PASSED</font>
+API:          <font color="#009900">PASSED</font>
+
+SpotBugs:     <font color="#009900">PASSED</font>
+PMD:          <font color="#009900">PASSED</font>
+Checkstyle:   <font color="#990000">FAILED (0 errors, 2 warnings)</font>
+
+Correctness:  <font color="#009900">13/13 tests passed</font>
+Memory:       <font color="#009900">No tests available for autograding.</font>
+Timing:       <font color="#009900">No tests available for autograding.</font>
+
+Aggregate score: 100.00%
+[ Compilation: 5%, API: 5%, Style: 0%, Correctness: 90% ]
+</pre>
+
+
+<br><br>
+
+<h2>ASSESSMENT DETAILS</h2>
+
+<pre>
+The following files were submitted:
+----------------------------------
+ 500 Sep 13 09:48 HelloGoodbye.java
+ 392 Sep 13 09:48 HelloWorld.java
+ 812 Sep 13 09:48 RandomWord.java
+
+
+********************************************************************************
+*  COMPILING                                                                    
+********************************************************************************
+
+
+% javac HelloWorld.java
+*-----------------------------------------------------------
+
+% javac HelloGoodbye.java
+*-----------------------------------------------------------
+
+% javac RandomWord.java
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+Checking the APIs of your programs.
+*-----------------------------------------------------------
+HelloWorld:
+
+HelloGoodbye:
+
+RandomWord:
+
+================================================================
+
+
+********************************************************************************
+*  CHECKING STYLE AND COMMON BUG PATTERNS                                       
+********************************************************************************
+
+
+% spotbugs *.class
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+% pmd .
+*-----------------------------------------------------------
+
+
+================================================================
+
+
+% checkstyle *.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for HelloWorld.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for HelloGoodbye.java
+*-----------------------------------------------------------
+
+% custom checkstyle checks for RandomWord.java
+*-----------------------------------------------------------
+[WARN] RandomWord.java:20: Calling 'StdIn.isEmpty()' in more than one place suggests poor design in this program. [Design]
+[WARN] RandomWord.java:21: Calling 'StdIn.readString()' in more than one place suggests poor design in this program. [Design]
+Checkstyle ends with 0 errors and 2 warnings.
+
+
+================================================================
+
+
+********************************************************************************
+*  TESTING CORRECTNESS
+********************************************************************************
+
+Testing correctness of HelloWorld
+*-----------------------------------------------------------
+Running 2 total tests.
+
+Test 1: check output format
+  % java HelloWorld
+  Hello, World
+
+==&gt; passed
+
+Test 2: check correctness
+  * java HelloWorld
+==&gt; passed
+
+
+HelloWorld Total: 2/2 tests passed!
+
+
+================================================================
+Testing correctness of HelloGoodbye
+*-----------------------------------------------------------
+Running 6 total tests.
+
+Test 1: check output format
+  % java HelloGoodbye Kevin Bob
+  Hello Kevin and Bob.
+  Goodbye Bob and Kevin.
+
+  % java HelloGoodbye Alejandra Bahati
+  Hello Alejandra and Bahati.
+  Goodbye Bahati and Alejandra.
+
+==&gt; passed
+
+Test 2: check correctness using names from assignment specification
+  * java HelloGoodbye Kevin Bob
+  * java HelloGoodbye Alejandra Bahati
+==&gt; passed
+
+Test 3: check correctness using fixed names
+  * java HelloGoodbye Chandra Deshi
+  * java HelloGoodbye Ayşe María
+  * java HelloGoodbye Wayan Taiyeo
+  * java HelloGoodbye Ástfríður Bedřiška
+==&gt; passed
+
+Test 4: check correctness when two names are the same
+  * java HelloGoodbye Turing Turing
+  * java HelloGoodbye Lovelace Lovelace
+  * java HelloGoodbye Hopper Hopper
+  * java HelloGoodbye Knuth Knuth
+==&gt; passed
+
+Test 5: check correctness using random names
+  * java HelloGoodbye Ameetha Shaniqua
+  * java HelloGoodbye Mertcan Silia
+  * java HelloGoodbye Varo Jessy
+  * java HelloGoodbye Horatio Stieg
+  * java HelloGoodbye Micaela Münür
+==&gt; passed
+
+Test 6: test correctness using many random names
+  * 10 pairs of random names
+  * 100 pairs of random names
+  * 1000 pairs of random names
+  * 10000 pairs of random names
+==&gt; passed
+
+
+HelloGoodbye Total: 6/6 tests passed!
+
+
+================================================================
+Testing correctness of RandomWord
+*-----------------------------------------------------------
+Running 5 total tests.
+
+Test 1: check that programs prints exactly one word
+  % java-algs4 RandomWord  &lt; animals8.txt
+  horse
+
+  % java-algs4 RandomWord  &lt; animals8.txt
+  fox
+
+  % java-algs4 RandomWord  &lt; coin.txt
+  heads
+
+  % java-algs4 RandomWord  &lt; names.txt
+  Hui+Qi
+
+==&gt; passed
+
+Test 2: check that the word the program prints appears on standard input
+  * 10000 trials from coin.txt
+  * 10000 trials from animals8.txt
+  * 10000 trials from animals.txt
+  * 10000 trials from colors.txt
+  * 10000 trials from algorithms.txt
+  * 10000 trials from dream.txt
+==&gt; passed
+
+Test 3: check that program consumes all data from standard input
+  * coin.txt
+  * animals8.txt
+  * animals.txt
+  * colors.txt
+  * algorithms.txt
+  * names.txt
+  * dream.txt
+==&gt; passed
+
+Test 4: check that words printed are uniformly random
+  * 12000 trials from coin.txt
+  * 12000 trials from roshambo.txt
+  * 12000 trials from die.txt
+  * 12000 trials from animals8.txt
+  * 12000 trials from animals25.txt
+  * 12000 trials from algorithms.txt
+==&gt; passed
+
+Test 5: check that words printed are uniformly random
+        (with some words on standard input repeated)
+  * 36000 trials from biased-coin.txt
+  * 36000 trials from loaded-die.txt
+  * 36000 trials from two-dice.txt
+  * 36000 trials from tinyTale.txt
+==&gt; passed
+
+
+RandomWord Total: 5/5 tests passed!
+
+
+================================================================
+
+</pre>
+
+
+</body></html>
