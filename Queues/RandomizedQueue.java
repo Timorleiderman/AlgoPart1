@@ -34,10 +34,12 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (item == null) {
             throw new IllegalArgumentException();
         }
+
         if (sizeN == arr.length) {
-            resize(2 * sizeN);
+            resize(sizeN << 1);
         }
         arr[sizeN++] = item;
+
 
     }
 
@@ -61,7 +63,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         arr[idx] = arr[--sizeN];
         arr[sizeN] = null;
 
-        if (sizeN == arr.length / 4) {
+        if (sizeN > 0 && sizeN == arr.length / 4) {
             resize(arr.length / 2);
         }
 
@@ -85,22 +87,25 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         private int i;
         private final Item[] iterArr;
+        private int remain;
 
         public RandomizedArrayIterator() {
+            remain = sizeN;
             iterArr = (Item[]) new Object[sizeN];
             for (i = 0; i < sizeN; i++)
                 iterArr[i] = arr[i];
             StdRandom.shuffle(iterArr);
+            i = 0;
 
         }
 
         public boolean hasNext() {
 
-            return i < sizeN;
+            return i < remain;
         }
 
         public Item next() {
-            if (i < sizeN || sizeN == 0) {
+            if (!hasNext()) {
                 throw new NoSuchElementException();
             }
             return iterArr[i++];
@@ -126,29 +131,37 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
             System.out.print(x + " ");
         }
         System.out.println("");
-        for (int x : test) {
-            System.out.print(x + " ");
-        }
-        System.out.println("");
+        //     for (int x : test) {
+        //         System.out.print(x + " ");
+        //     }
+        //     System.out.println("");
+        //
+        //     System.out.println(test.dequeue());
+        //     System.out.println(test.dequeue());
+        //     System.out.println(test.dequeue());
+        //
+        //     for (int x : test) {
+        //         System.out.print(x + " ");
+        //     }
+        //     System.out.println("");
+        //
+        //
+        //     System.out.println(test.dequeue());
+        //     System.out.println(test.dequeue());
+        //     System.out.println(test.dequeue());
+        //
+        //     for (int x : test) {
+        //         System.out.print(x + " ");
+        //     }
+        //     System.out.println("");
+        RandomizedQueue<Integer> queue = new RandomizedQueue<>();
+        for (int j = 1; j <= 10; j++)
+            queue.enqueue(j);
+        Iterator<Integer> iterator = queue.iterator();
+        for (int j = 1; j <= 10; j++)
+            System.out.print(iterator.next() + " ");
 
-        System.out.println(test.dequeue());
-        System.out.println(test.dequeue());
-        System.out.println(test.dequeue());
 
-        for (int x : test) {
-            System.out.print(x + " ");
-        }
-        System.out.println("");
-
-
-        System.out.println(test.dequeue());
-        System.out.println(test.dequeue());
-        System.out.println(test.dequeue());
-
-        for (int x : test) {
-            System.out.print(x + " ");
-        }
-        System.out.println("");
     }
 
 }
