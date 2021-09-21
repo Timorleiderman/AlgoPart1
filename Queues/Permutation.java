@@ -10,6 +10,7 @@ import edu.princeton.cs.algs4.StdRandom;
 public class Permutation {
     public static void main(String[] args) {
         int k = Integer.parseInt(args[0]);
+        double n = 1.0;
         RandomizedQueue<String> randQ = new RandomizedQueue<String>();
 
         while (!StdIn.isEmpty()) {
@@ -20,7 +21,7 @@ public class Permutation {
             if (k > randQ.size()) {
                 randQ.enqueue(str);
             }
-            else if (StdRandom.uniform() < k) {
+            else if (StdRandom.uniform() < (k / n)) {
                 randQ.dequeue();
                 randQ.enqueue(str);
             }
