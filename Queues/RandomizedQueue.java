@@ -87,7 +87,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
 
         private int i;
         private final Item[] iterArr;
-        private int remain;
+        private final int remain;
 
         public RandomizedArrayIterator() {
             remain = sizeN;
