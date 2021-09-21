@@ -110,6 +110,7 @@ public class Deque<Item> implements Iterable<Item> {
         }
         else {
             last = last.prev;
+            last.next = null;
         }
         size--;
         return res;
