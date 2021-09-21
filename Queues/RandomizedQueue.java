@@ -84,7 +84,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
     private class RandomizedArrayIterator implements Iterator<Item> {
 
         private int i;
-        private Item[] iterArr;
+        private final Item[] iterArr;
 
         public RandomizedArrayIterator() {
             iterArr = (Item[]) new Object[N];
@@ -96,10 +96,14 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         }
 
         public boolean hasNext() {
+
             return i < N;
         }
 
         public Item next() {
+            if (i < N || N == 0) {
+                throw new NoSuchElementException();
+            }
             return iterArr[i++];
         }
 
