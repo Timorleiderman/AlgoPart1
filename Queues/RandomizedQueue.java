@@ -11,22 +11,22 @@ import java.util.NoSuchElementException;
 public class RandomizedQueue<Item> implements Iterable<Item> {
 
     private Item[] arr;
-    private int N;
+    private int sizeN;
 
     // construct an empty randomized queue
     public RandomizedQueue() {
         arr = (Item[]) new Object[1];
-        N = 0;
+        sizeN = 0;
     }
 
     // is the randomized queue empty?
     public boolean isEmpty() {
-        return N == 0;
+        return sizeN == 0;
     }
 
     // return the number of items on the randomized queue
     public int size() {
-        return N;
+        return sizeN;
     }
 
     // add the item
@@ -34,16 +34,16 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (item == null) {
             throw new IllegalArgumentException();
         }
-        if (N == arr.length) {
-            resize(2 * N);
+        if (sizeN == arr.length) {
+            resize(2 * sizeN);
         }
-        arr[N++] = item;
+        arr[sizeN++] = item;
 
     }
 
     private void resize(int size) {
         Item[] tempArr = (Item[]) new Object[size];
-        for (int idx = 0; idx < N; idx++) {
+        for (int idx = 0; idx < sizeN; idx++) {
             tempArr[idx] = arr[idx];
         }
         arr = tempArr;
@@ -55,13 +55,13 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        int idx = StdRandom.uniform(N);
+        int idx = StdRandom.uniform(sizeN);
         Item res = arr[idx];
 
-        arr[idx] = arr[--N];
-        arr[N] = null;
+        arr[idx] = arr[--sizeN];
+        arr[sizeN] = null;
 
-        if (N == arr.length / 4) {
+        if (sizeN == arr.length / 4) {
             resize(arr.length / 2);
         }
 
@@ -73,7 +73,7 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         if (isEmpty()) {
             throw new NoSuchElementException();
         }
-        return arr[StdRandom.uniform(N)];
+        return arr[StdRandom.uniform(sizeN)];
     }
 
     // return an independent iterator over items in random order
@@ -87,21 +87,20 @@ public class RandomizedQueue<Item> implements Iterable<Item> {
         private final Item[] iterArr;
 
         public RandomizedArrayIterator() {
-            iterArr = (Item[]) new Object[N];
-            for (int i = 0; i < N; i++) {
+            iterArr = (Item[]) new Object[sizeN];
+            for (i = 0; i < sizeN; i++)
                 iterArr[i] = arr[i];
-            }
             StdRandom.shuffle(iterArr);
 
         }
 
         public boolean hasNext() {
 
-            return i < N;
+            return i < sizeN;
         }
 
         public Item next() {
-            if (i < N || N == 0) {
+            if (i < sizeN || sizeN == 0) {
                 throw new NoSuchElementException();
             }
             return iterArr[i++];
