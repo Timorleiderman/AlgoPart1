@@ -5,6 +5,7 @@
  **************************************************************************** */
 
 import edu.princeton.cs.algs4.StdIn;
+import edu.princeton.cs.algs4.StdRandom;
 
 public class Permutation {
     public static void main(String[] args) {
@@ -13,9 +14,18 @@ public class Permutation {
 
         while (!StdIn.isEmpty()) {
             String str = StdIn.readString();
-            randQ.enqueue(str);
+            if (k == 0) {
+                return;
+            }
+            if (k > randQ.size()) {
+                randQ.enqueue(str);
+            }
+            else if (StdRandom.uniform() < k) {
+                randQ.dequeue();
+                randQ.enqueue(str);
+            }
         }
-        for (int i = 0; i < k; i++) {
+        while (!randQ.isEmpty()) {
             System.out.println(randQ.dequeue());
         }
     }
