@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import java.util.Arrays;
 
 public class FastCollinearPoints {
-    private LineSegment[] lineSegments;
+    private final LineSegment[] lineSegments;
 
     // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] points) {
@@ -30,7 +30,7 @@ public class FastCollinearPoints {
                         .slopeTo(tempPoints[end])) {
                     end++;
                 }
-                if (end - begin >= 3) {
+                if ((end - begin >= 3) && (originP.compareTo(tempPoints[begin]) < 0)) {
                     foundSegments.add(new LineSegment(originP, tempPoints[end - 1]));
                 }
                 begin = end;
