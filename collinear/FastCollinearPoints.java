@@ -21,19 +21,22 @@ public class FastCollinearPoints {
         ArrayList<LineSegment> foundSegments = new ArrayList<LineSegment>();
 
         for (int i = 0; i < sortedPoints.length; i++) {
-            Arrays.sort(sortedPoints);
-            Arrays.sort(sortedPoints, sortedPoints[i].slopeOrder());
-
-            for (int j = 0, begin = 1, end = 2; end < sortedPoints.length; end++) {
+            Arrays.sort(sortedPoints); // back to normal sort
+            Arrays.sort(sortedPoints, sortedPoints[i].slopeOrder()); // sort by slope
+            int begin = 1;
+            int end = 2;
+            while (end < sortedPoints.length) {
                 while (end < sortedPoints.length
-                        && sortedPoints[j].slopeTo(sortedPoints[begin]) == sortedPoints[j]
+                        && sortedPoints[0].slopeTo(sortedPoints[begin]) == sortedPoints[0]
                         .slopeTo(sortedPoints[end])) {
                     end += 1;
                 }
-                if ((end - begin >= 3) && (sortedPoints[j].compareTo(sortedPoints[begin]) < 0)) {
-                    foundSegments.add(new LineSegment(sortedPoints[j], sortedPoints[end - 1]));
+                if ((end - begin >= 3) && (sortedPoints[0].compareTo(sortedPoints[begin]) < 0)) {
+                    foundSegments.add(new LineSegment(sortedPoints[0], sortedPoints[end - 1]));
                 }
                 begin = end;
+                end++;
+
             }
         }
 
