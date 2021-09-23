@@ -13,7 +13,7 @@ import java.util.Arrays;
 
 public class BruteCollinearPoints {
 
-    private LineSegment[] lineSegments;
+    private final LineSegment[] lineSegments;
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
@@ -35,7 +35,7 @@ public class BruteCollinearPoints {
                 }
             }
         }
-        lineSegments = foundSegments.toArray(new LineSegment[foundSegments.size()]);
+        lineSegments = foundSegments.toArray(new LineSegment[0]);
     }
 
     private void checkInput(Point[] points) {
