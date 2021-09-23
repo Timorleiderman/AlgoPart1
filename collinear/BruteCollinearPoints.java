@@ -17,8 +17,8 @@ public class BruteCollinearPoints {
 
     // finds all line segments containing 4 points
     public BruteCollinearPoints(Point[] points) {
-        Point[] localPoints = points.clone();
         checkInput(points);
+        Point[] localPoints = points.clone();
         ArrayList<LineSegment> foundSegments = new ArrayList<LineSegment>();
         Arrays.sort(localPoints);
         for (int i = 0; i < localPoints.length - 3; i++) {
