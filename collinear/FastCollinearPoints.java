@@ -18,8 +18,6 @@ public class FastCollinearPoints {
     public FastCollinearPoints(Point[] points) {
         checkInput(points);
         Point[] sortedPoints = points.clone();
-        //Arrays.sort(sortedPoints);
-
         ArrayList<LineSegment> foundSegments = new ArrayList<LineSegment>();
 
         for (int i = 0; i < sortedPoints.length; i++) {
@@ -30,7 +28,7 @@ public class FastCollinearPoints {
                 while (end < sortedPoints.length
                         && sortedPoints[j].slopeTo(sortedPoints[begin]) == sortedPoints[j]
                         .slopeTo(sortedPoints[end])) {
-                    end++;
+                    end += 1;
                 }
                 if ((end - begin >= 3) && (sortedPoints[j].compareTo(sortedPoints[begin]) < 0)) {
                     foundSegments.add(new LineSegment(sortedPoints[j], sortedPoints[end - 1]));
