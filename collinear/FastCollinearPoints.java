@@ -17,21 +17,23 @@ public class FastCollinearPoints {
     // finds all line segments containing 4 or more points
     public FastCollinearPoints(Point[] points) {
         checkInput(points);
-        Arrays.sort(points);
-        ArrayList<LineSegment> foundSegments = new ArrayList<LineSegment>();
-        // Point[] tempPoints = Arrays.copyOf(points, points.length);
-        Point[] tempPoints = points.clone();
-        for (int i = 0; i < tempPoints.length - 3; i++) {
-            Point originP = points[i];
-            Arrays.sort(tempPoints, originP.slopeOrder());
+        Point[] sortedPoints = points.clone();
+        //Arrays.sort(sortedPoints);
 
-            for (int begin = 1, end = 2; end < tempPoints.length; end++) {
-                while (end < tempPoints.length && originP.slopeTo(tempPoints[begin]) == originP
-                        .slopeTo(tempPoints[end])) {
+        ArrayList<LineSegment> foundSegments = new ArrayList<LineSegment>();
+
+        for (int i = 0; i < sortedPoints.length; i++) {
+            Arrays.sort(sortedPoints);
+            Arrays.sort(sortedPoints, sortedPoints[i].slopeOrder());
+
+            for (int j = 0, begin = 1, end = 2; end < sortedPoints.length; end++) {
+                while (end < sortedPoints.length
+                        && sortedPoints[j].slopeTo(sortedPoints[begin]) == sortedPoints[j]
+                        .slopeTo(sortedPoints[end])) {
                     end++;
                 }
-                if ((end - begin >= 3) && (originP.compareTo(tempPoints[begin]) < 0)) {
-                    foundSegments.add(new LineSegment(originP, tempPoints[end - 1]));
+                if ((end - begin >= 3) && (sortedPoints[j].compareTo(sortedPoints[begin]) < 0)) {
+                    foundSegments.add(new LineSegment(sortedPoints[j], sortedPoints[end - 1]));
                 }
                 begin = end;
             }
