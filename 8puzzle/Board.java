@@ -144,10 +144,10 @@ public class Board {
     public Board twin() {
 
         if (blankY != 0) {
-            return new Board(exchCopy(0, 0, 0, 1));
+            return new Board(exchCopy(0, 0, 1, 0));
         }
         else {
-            return new Board(exchCopy(1, 0, 1, 1));
+            return new Board(exchCopy(0, 1, 1, 1));
         }
     }
 
