@@ -142,30 +142,13 @@ public class Board {
 
     // a board that is obtained by exchanging any pair of tiles
     public Board twin() {
-        int xd = 0, yd = 0;
-        if (blankX > 0) {
-            xd = blankX - 1;
-        }
-        else if (blankX < size - 1) {
-            xd = blankX + 1;
-        }
-        if (blankY > 0) {
-            yd = blankY - 1;
-        }
-        else if (blankY < size - 1) {
-            yd = blankY + 1;
-        }
-        Board twin = null;
-        for (int i = 0; i < size; i++) {
-            for (int j = 0; j < size; j++) {
-                if (blocks[i][j] != 0) {
-                    twin = new Board(exchCopy(j, i, xd, yd));
-                    return twin;
-                }
-            }
-        }
-        return twin;
 
+        if (blankY != 0) {
+            return new Board(exchCopy(0, 0, 0, 1));
+        }
+        else {
+            return new Board(exchCopy(1, 0, 1, 1));
+        }
     }
 
     // unit testing (not graded)
@@ -178,7 +161,6 @@ public class Board {
             for (int j = 0; j < n; j++)
                 tiles[i][j] = in.readInt();
         Board init = new Board(tiles);
-        Board tw = init.twin();
         System.out.println(init.toString());
     }
 
