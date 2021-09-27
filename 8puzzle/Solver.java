@@ -129,13 +129,7 @@ public class Solver {
         }
 
         public int compareTo(SearchNode searchNode) {
-            if (this.getPriority() > searchNode.getPriority()) {
-                return 1;
-            }
-            if (this.getPriority() < searchNode.getPriority()) {
-                return -1;
-            }
-            return Integer.compare(this.board.manhattan(), searchNode.board.manhattan());
+            return this.getPriority() - searchNode.getPriority();
         }
 
         public int getPriority() {
