@@ -4,7 +4,6 @@
  *  Description:
  **************************************************************************** */
 
-import edu.princeton.cs.algs4.In;
 import edu.princeton.cs.algs4.Point2D;
 import edu.princeton.cs.algs4.RectHV;
 import edu.princeton.cs.algs4.Stack;
@@ -166,17 +165,18 @@ public class KdTree {
         if (rect == null) {
             throw new IllegalArgumentException();
         }
+
         Stack<Point2D> pointsInRect = new Stack<Point2D>();
         RectHV rootRect = new RectHV(0, 0, 1, 1);
         range(root, rootRect, rect, pointsInRect);
         return pointsInRect;
     }
 
-    private void range(Node node, RectHV rect, RectHV queryRect, Stack<Point2D> pointsInRect) {
+    private void range(Node node, RectHV nodeRect, RectHV queryRect, Stack<Point2D> pointsInRect) {
         if (node == null) {
             return;
         }
-        if (!rect.intersects(queryRect)) {
+        if (!nodeRect.intersects(queryRect)) {
             return;
         }
 
@@ -185,15 +185,19 @@ public class KdTree {
         }
 
         if (node.direction == VERT) {
-            range(node.right, new RectHV(node.point.x(), rect.ymin(), rect.xmax(), rect.ymax()),
+            range(node.right,
+                  new RectHV(node.point.x(), nodeRect.ymin(), nodeRect.xmax(), nodeRect.ymax()),
                   queryRect, pointsInRect);
-            range(node.left, new RectHV(rect.xmin(), rect.ymin(), node.point.x(), rect.ymax()),
+            range(node.left,
+                  new RectHV(nodeRect.xmin(), nodeRect.ymin(), node.point.x(), nodeRect.ymax()),
                   queryRect, pointsInRect);
         }
         else {
-            range(node.right, new RectHV(rect.xmin(), node.point.y(), rect.xmax(), rect.ymax()),
+            range(node.right,
+                  new RectHV(nodeRect.xmin(), node.point.y(), nodeRect.xmax(), nodeRect.ymax()),
                   queryRect, pointsInRect);
-            range(node.left, new RectHV(rect.xmin(), rect.ymin(), node.point.x(), node.point.y()),
+            range(node.left,
+                  new RectHV(nodeRect.xmin(), nodeRect.ymin(), nodeRect.xmax(), node.point.y()),
                   queryRect, pointsInRect);
         }
     }
@@ -268,17 +272,22 @@ public class KdTree {
     public static void main(String[] args) {
 
         // initialize the two data structures with point from file
-        String filename = args[0];
-        In in = new In(filename);
-        KdTree kdtree = new KdTree();
-        while (!in.isEmpty()) {
-            double x = in.readDouble();
-            double y = in.readDouble();
-            Point2D p = new Point2D(x, y);
-            kdtree.insert(p);
-        }
+        // String filename = args[0];
+        // In in = new In(filename);
+        // KdTree kdtree = new KdTree();
+        // while (!in.isEmpty()) {
+        //     double x = in.readDouble();
+        //     double y = in.readDouble();
+        //     Point2D p = new Point2D(x, y);
+        //     kdtree.insert(p);
+        // }
+        //
+        // Point2D check = new Point2D(0.226, 0.577);
+        // System.out.println(kdtree.contains(check));
+        // RectHV rect = new RectHV(0.01, 0.32, 0.83, 0.88);
+        // for (Point2D point : kdtree.range(rect)) {
+        //     System.out.println(point);
+        // }
 
-        Point2D check = new Point2D(0.226, 0.577);
-        System.out.println(kdtree.contains(check));
     }
 }
