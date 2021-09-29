@@ -113,18 +113,18 @@ public class KdTree {
                 else return true;
             }
             else {
-                if (node.direction == HORZ) {
-                    if (point.y() > node.point.y()) {
-                        node = node.right;
-                    }
-                    else if (point.y() < node.point.y()) {
-                        node = node.left;
-                    }
-                    else if (point.x() != node.point.x()) {
-                        node = node.right;
-                    }
-                    else return true;
+                // Horizontal direction
+                if (point.y() > node.point.y()) {
+                    node = node.right;
                 }
+                else if (point.y() < node.point.y()) {
+                    node = node.left;
+                }
+                else if (point.x() != node.point.x()) {
+                    node = node.right;
+                }
+                else return true;
+
             }
         }
         return false;
@@ -190,7 +190,7 @@ public class KdTree {
             range(node.left, new RectHV(rect.xmin(), rect.ymin(), node.point.x(), rect.ymax()),
                   queryRect, pointsInRect);
         }
-        if (node.direction == HORZ) {
+        else {
             range(node.right, new RectHV(rect.xmin(), node.point.y(), rect.xmax(), rect.ymax()),
                   queryRect, pointsInRect);
             range(node.left, new RectHV(rect.xmin(), rect.ymin(), node.point.x(), node.point.y()),
